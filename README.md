@@ -19,8 +19,8 @@ git pull origin master
 	* isporučuje se individualno (svatko u svoju privatnu mapu). Isporuka započinje prihvaćanjem zadatka na sljedećoj poveznici https://classroom.github.com/assignment-invitations/6291464c77a5dd059df243d5df5420cf čime će se automatski stvoriti privatna mapa za isporuku sadržaja zadatka. 
 	* **Rok za predaju zapisnika je petak 7.4.2017. u 8:00**
 	 
-2. Plan projekta- detaljnije nakon održanih vježbi i podjele u grupe
-3. Specifikacija zahtjeva- detaljnije nakon održanih vježbi i podjele u grupe
-4. Specifikacija dizajna - detaljnije nakon održanih vježbi i podjele u grupe
+2. Plan projekta- detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju 17.4.2017. u 8:00**
+3. Specifikacija zahtjeva- detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju 17.4.2017. u 8:00**
+4. Specifikacija dizajna - detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju 17.4.2017. u 8:00**
 5. Web aplikacija - detaljnije nakon sljedećih predavanja
 6. Programska i korisnička dokumentacija - detaljnije nakon sljedećih predavanja
