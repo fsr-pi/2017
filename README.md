@@ -22,5 +22,10 @@ git pull origin master
 2. Plan projekta- detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju 17.4.2017. u 8:00**
 3. Specifikacija zahtjeva- detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju 17.4.2017. u 8:00**
 4. Specifikacija dizajna - detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju 17.4.2017. u 8:00**
+	* Plan projekta, specifikacija zahtjeva i specifikacija dizajna isporučuju se u zajedničku mapu grupe.  
+	Mapa će stvoriti nakon što prva osoba iz grupe prihvati zadatak koji se nalazi na sljedećoj poveznici https://classroom.github.com/group-assignment-invitations/3c430e1718c7533713abcfc725609fdc 
+	te pritom stvori grupu na nazivom grupaX (X je broj grupe). Ostali prihvaćaju zadatak na istoj poveznici, ali prilikom prihvaćanja umjesto unosa nove grupe odabiru postojeću grupu i pridružuju se.
+	Isporučene dokumente može mijenjati neograničen broj puta do krajnjeg roka.
+
 5. Web aplikacija - detaljnije nakon sljedećih predavanja
 6. Programska i korisnička dokumentacija - detaljnije nakon sljedećih predavanja
