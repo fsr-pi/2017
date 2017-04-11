@@ -19,9 +19,9 @@ git pull origin master
 	* isporučuje se individualno (svatko u svoju privatnu mapu). Isporuka započinje prihvaćanjem zadatka na sljedećoj poveznici https://classroom.github.com/assignment-invitations/6291464c77a5dd059df243d5df5420cf čime će se automatski stvoriti privatna mapa za isporuku sadržaja zadatka. 
 	* **Rok za predaju zapisnika je ~~petak 7.4.2017. u 8:00~~ ponedjeljak 10.4.2017. u 16:00 **
 	 
-2. Plan projekta- detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju 17.4.2017. u 8:00**
-3. Specifikacija zahtjeva- detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju 17.4.2017. u 8:00**
-4. Specifikacija dizajna - detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju 17.4.2017. u 8:00**
+2. Plan projekta- detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju **~~17~~**24.4.2017. u 8:00**
+3. Specifikacija zahtjeva- detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju **~~17~~**24.4.2017. u 8:00**
+4. Specifikacija dizajna - detaljnije nakon održanih vježbi i podjele u grupe **Rok za predaju **~~17~~**24.4.2017. u 8:00**
 	* Plan projekta, specifikacija zahtjeva i specifikacija dizajna isporučuju se u zajedničku mapu grupe.  
 	Mapa će stvoriti nakon što prva osoba iz grupe prihvati zadatak koji se nalazi na sljedećoj poveznici https://classroom.github.com/group-assignment-invitations/3c430e1718c7533713abcfc725609fdc 
 	te pritom stvori grupu s nazivom grupaX (X je broj grupe). Ostali prihvaćaju zadatak na istoj poveznici, ali prilikom prihvaćanja umjesto unosa nove grupe odabiru postojeću grupu i pridružuju se.
