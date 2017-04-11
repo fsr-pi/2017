@@ -1,0 +1,47 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            GeometrijskiLik geo = new GeometrijskiLik();
+            geo.UcitajStranice();
+            geo.Opseg();
+            Console.ReadLine();
+
+
+        }
+        public class GeometrijskiLik
+        {
+            string Naziv;
+            int BrojStranica;
+            double[] Stranice = new double[10];
+
+            public void UcitajStranice()
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    Stranice[i] = Convert.ToInt32(Console.ReadLine());
+                }
+            }
+
+            public void Opseg()
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    double Opseg = 0;
+                    Opseg  += Stranice[i];
+                }
+            }
+
+        }
+    }
+}

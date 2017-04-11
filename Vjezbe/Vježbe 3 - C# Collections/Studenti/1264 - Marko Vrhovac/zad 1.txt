@@ -1,0 +1,39 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            ArrayList list = new ArrayList();
+            int i, n ;
+
+            do
+            {
+
+                Console.WriteLine("Unesi duljinu niza");
+                n = Convert.ToInt32(Console.ReadLine());
+
+            } while (n > 90 || n < 0);
+
+
+            for (i = 0; i < n; i++)
+            {
+                list.Add(i+10);
+            }
+
+            for( i = 0; i < list.Count; i++)
+            {
+                Console.WriteLine(list[i]);
+            }
+
+
+        }
+    }
+}

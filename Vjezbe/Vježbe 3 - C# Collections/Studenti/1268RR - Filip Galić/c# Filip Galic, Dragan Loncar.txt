@@ -1,0 +1,105 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp7
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int x;
+            Console.WriteLine("Molimo unesite broj");
+            do
+            {
+                 x = Convert.ToInt32(Console.ReadLine());
+            } while (x < 10 || x > 99);
+            List < int > list1 = new List<int>(x);
+            int dz = 10;
+            for (int i = 0; i < x; i++)
+            {
+
+                list1.Add(dz);
+                dz++;
+                if (dz > 99) { break; }
+            }
+            Console.WriteLine("Ispis Brojeva : ");
+            for (int i = 0; i <list1.Count(); i++)
+            {
+                Console.WriteLine(list1.ElementAt(i));
+            }
+            Console.ReadKey();
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Drugi
+
+
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp7
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int x;
+            List < int > list1 = new List<int>(10);
+            List<int> list2 = new List<int>(10);
+    
+            do
+            {
+                x = Convert.ToInt32(Console.ReadLine());
+                if (x == 0) break;
+                if (x % 2 == 0)
+                {
+                    list2.Add(x);
+                }
+                else list1.Add(x);
+            } while (list1.Count()+list2.Count()<=10);
+
+            Console.WriteLine("Prvi Niz :");
+            for (int i = 0; i < list1.Count(); i++)
+            {
+                if(list1.ElementAt(i)!=null)
+                Console.WriteLine(list1.ElementAt(i));
+            }
+            Console.WriteLine("Drugi Niz :");
+            for (int i = 0; i < list2.Count(); i++)
+            {
+                if (list2.ElementAt(i) != null)
+                    Console.WriteLine(list2.ElementAt(i));
+            }
+            Console.ReadKey();
+        }
+    }
+}
+

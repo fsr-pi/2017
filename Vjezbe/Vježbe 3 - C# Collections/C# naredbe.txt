@@ -1,0 +1,16 @@
+Console.ReadLine() - èita niz znakova
+Console.Read() - èita znak
+
+Console.Write() - ispis
+Console.WriteLine() - ispis i prelazak u novi red
+
+while, do-while, for, foreach
+
+https://msdn.microsoft.com/en-us/library/mt654013.aspx
+
+ArrayList
+List <T>
+LinkedList
+Dictionary <TKey, TValue>
+Queue <T>
+Stack <T>

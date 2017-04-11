@@ -1,0 +1,23 @@
+1. Napišite program koji æe definirati niz koji æe sadržavati n prvih dvoznamenkastih brojeva.
+Broj n uzmite od korisnika, a prisilite ga da ne unese broj veæi od maksimalnog broja
+dvoznamenkastih brojeva.
+
+2. Napišite program koji æe deklarirati dva niza tipa int velièine 10 èlanova, te æe zatražiti od
+korisnika da unosi brojeve. Ako korisnik unese neparni broj spremite ga u prvi niz, a ako unese
+parni spremite ga u drugi niz. Program treba prestati s radom ako korisnik unese 0 ili kad ukupan
+broj èlanova dodijeljenih pojedinom nizu premaši 10.
+Na kraju ispišite sve èlanove nizova.
+
+3.	Definirajte klasu GeometrijskiLik sa sljedeæim 	èlanicama:
+• varijabla tipa String
+	Naziv
+• varijabla tipa int
+	BrojStranica
+• niz tipa double velièine 10
+	Stranice
+• metode
+	UcitajStranice() koja æe uèitati od korisnika 	stranice geometrijskog lika
+	Opseg () koja æe vratiti opseg geometrijskog lika
+
+4.	Napišite program koji æe zatražiti od korisnika da unese 10 cijelih brojeva od 1 do 1000, te æe provjeriti je li aritmetièka sredina svih unešenih brojeva jednaka aritmetièkoj sredini najveæeg i najmanjeg unešenog broja. Korisnik mora unijeti 10 brojeva u zadanom rasponu, unose brojeva izvan raspona ne smijete raèunati kao jedan od 10 unosa. 
+

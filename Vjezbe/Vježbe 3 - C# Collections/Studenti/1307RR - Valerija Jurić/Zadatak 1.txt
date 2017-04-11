@@ -1,0 +1,38 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            int n;
+            string prvi;
+            Console.WriteLine("Unesite broj:");
+            prvi = Console.ReadLine();
+            n = Convert.ToInt32(prvi);
+            ArrayList list = new ArrayList();
+            int unos;
+            for (int i = 0; i < n; i++)
+            {
+                do {
+                    unos = Convert.ToInt32(Console.ReadLine());
+                } while (unos > 99 || unos < 10);
+                list.Add(unos);
+            }
+
+            string value;
+            for (int i = 0; i < list.Count; i++)
+            {
+                value = list[i].ToString();
+                Console.WriteLine(value);
+            }
+        }
+    }
+}

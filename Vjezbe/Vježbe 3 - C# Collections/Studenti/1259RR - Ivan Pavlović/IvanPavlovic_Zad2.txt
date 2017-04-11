@@ -1,0 +1,49 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            var n = 0;
+            var suma = 0;
+
+            ArrayList list = new ArrayList();
+            ArrayList list2 = new ArrayList();
+
+            Console.WriteLine("Unosite brojeve: ");
+            do
+            {
+                n = Convert.ToInt32(Console.ReadLine());
+                suma++;
+                if (n % 2 == 0)
+                {
+                    list2.Add(n);
+                }
+                else {
+                    list.Add(n);
+                }
+                
+            } while (n!=0 && suma < 10);
+
+            Console.WriteLine("Prvi niz: ");
+            foreach (int i in list)
+            {
+                    Console.WriteLine(i);
+            }
+            Console.WriteLine("Drugi niz: ");
+            foreach (int i in list2)
+            {
+                Console.WriteLine(i);
+            }
+            Console.ReadLine();
+        }
+    }
+}
