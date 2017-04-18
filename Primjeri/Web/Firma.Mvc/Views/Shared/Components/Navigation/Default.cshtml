@@ -1,0 +1,34 @@
+﻿<a class="btn btn-block btn-default"
+   asp-action="Index" asp-controller="Home">
+  Početna stranica
+</a>
+
+<a class="btn btn-block
+   @(ViewBag.Controller == "Drzava" ? "btn-primary": "btn-default")"
+   asp-action="Index" asp-controller="Drzava">
+  Države
+</a>
+
+<a class="btn btn-block
+   @(ViewBag.Controller == "Mjesto" ? "btn-primary": "btn-default")"
+   asp-action="Index" asp-controller="Mjesto">
+  Mjesta
+</a>
+
+<a class="btn btn-block
+   @(ViewBag.Controller == "Artikl" ? "btn-primary": "btn-default")"
+   asp-action="Index" asp-controller="Artikl">
+  Artikli
+</a>
+
+<a class="btn btn-block
+   @(ViewBag.Controller == "Partner" ? "btn-primary": "btn-default")"
+   asp-action="Index" asp-controller="Partner">
+  Partneri
+</a>
+
+<a class="btn btn-block
+   @(ViewBag.Controller == "Dokument" ? "btn-primary": "btn-default")"
+   asp-action="Index" asp-controller="Dokument">
+  Dokumenti
+</a>

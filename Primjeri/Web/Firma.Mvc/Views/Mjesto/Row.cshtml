@@ -1,0 +1,19 @@
+﻿@model MjestoViewModel
+
+<tr>
+  <td class="text-left">@Model.PostBrojMjesta</td>
+  <td class="text-left">@Model.NazivMjesta</td>
+  <td class="text-left">@Model.PostNazivMjesta</td>
+  <td class="text-left">@Model.NazivDrzave</td>
+  <td>
+    <a data-idmjesta="@Model.IdMjesta" class="btn btn-warning btn-xs editajax" title="Ažuriraj"><span class="glyphicon glyphicon-pencil"></span></a>
+  </td>
+  <td>
+    <form asp-action="Delete" method="post">
+      @*Neće se koristiti direktni submit, ali treba zbog anti forgery tokena*@
+      @*Jednako tako nije potreban ni ovaj input type=hidden ako skripta ispravno radi*@
+      <input type="hidden" name="IdMjesta" value="@Model.IdMjesta" />
+      <button data-idmjesta="@Model.IdMjesta" class="btn btn-xs btn-danger deleteajax" title="Obriši"><span class="glyphicon glyphicon-remove"></span></button>
+    </form>
+  </td>
+</tr>

@@ -1,0 +1,50 @@
+﻿@model MjestaViewModel
+
+@{
+  ViewBag.Title += "Mjesta";
+}
+
+<h2>Popis mjesta</h2>
+
+
+<a asp-action="Create">Unos novog mjesta</a>
+
+<div page-info="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-default"
+     page-class-selected="btn-primary" class="btn-group pull-right">
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      @{
+        string[] nazivi = { "Poštanski broj", "Naziv mjesta", "Poštanski naziv mjesta", "Država" };
+        for (int i = 1; i <= nazivi.Length; i++)
+        {
+          <th>
+            <a asp-route-sort="@i" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == i ? Model.PagingInfo.Ascending? false : true : true)">
+              @nazivi[i - 1]
+            </a>
+          </th>
+        }
+      }
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var mjesto in Model.Mjesta)
+    {
+      @Html.Partial("Row", mjesto)
+    }
+  </tbody>
+</table>
+
+@section scripts{
+  <script type="text/javascript">
+        $(function () {
+            SetEditAjax(".editajax", '@Url.Action("Edit")','idmjesta');
+            SetDeleteAjax(".deleteajax", '@Url.Action("Delete")', 'idmjesta');
+        });
+  </script>
+}

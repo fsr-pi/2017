@@ -1,0 +1,64 @@
+﻿@using Firma.Mvc.Models;
+@model IEnumerable<Drzava>
+@{
+  ViewData["Title"] = "Popis država";
+}
+<h2>Popis država</h2>
+
+<div class="panel-body">
+  @if (TempData[Constants.Message] != null)
+  {
+    bool error = false;
+    var obj = TempData[Constants.ErrorOccurred];
+    if (obj != null)
+    {
+      error = (bool)obj;
+    }
+    <div class="alert @(error ? "alert-danger" : "alert-success")">@TempData[Constants.Message]</div>
+  }
+</div>
+<table class="table table-striped" id="tabledrzave">
+  <thead>
+    <tr>
+      <th>Oznaka države</th>
+      <th>Naziv države</th>
+      <th>Iso3 oznaka</th>
+      <th>Šifra države</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var drzava in Model)
+    {
+      <tr>
+        <td class="text-center">@drzava.OznDrzave</td>
+        <td class="text-left">@drzava.NazDrzave</td>
+        <td class="text-center">@drzava.Iso3drzave</td>
+        <td class="text-center">@drzava.SifDrzave</td>
+        <td>
+          <a asp-action="Edit" asp-route-id="@drzava.OznDrzave" class="btn btn-warning btn-xs" title="Ažuriraj"><span class="glyphicon glyphicon-pencil"></span></a>
+        </td>
+        <td>
+          <form asp-action="Delete" method="post">
+            <input type="hidden" name="OznDrzave" value="@drzava.OznDrzave" />
+            <button type="submit" class="btn btn-xs btn-danger" title="Obriši"><span class="glyphicon glyphicon-remove"></span></button>
+          </form>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+@section styles{
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css" />
+}
+
+@section scripts{
+  <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+  <script>
+  $(document).ready(function(){    
+    $('#tabledrzave').DataTable();
+  });
+  </script>
+}

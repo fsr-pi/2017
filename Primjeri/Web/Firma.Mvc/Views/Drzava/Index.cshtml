@@ -1,0 +1,72 @@
+﻿@model DrzaveViewModel
+
+@{
+  ViewBag.Title += "Države";
+}
+
+<h2>Popis država</h2>
+
+
+<a asp-action="Create">Unos nove države</a>
+
+<div page-info="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-default"
+     page-class-selected="btn-primary" class="btn-group pull-right">
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>
+        <a asp-route-sort="1" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 1 ? Model.PagingInfo.Ascending? false : true : true)">
+          Oznaka države
+        </a>
+      </th>
+      <th>
+        <a asp-route-sort="2" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 2 ? Model.PagingInfo.Ascending? false : true : true)">
+          Naziv države
+        </a>
+      </th>
+      <th>
+        <a asp-route-sort="3" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 3 ? Model.PagingInfo.Ascending? false : true : true)">
+          ISO3 oznaka
+        </a>
+      </th>
+      <th>
+        <a asp-route-sort="4" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 4 ? Model.PagingInfo.Ascending? false : true : true)">
+          Šifra države
+        </a>
+      </th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var drzava in Model.Drzave)
+    {
+      <tr>
+        <td class="text-center">@drzava.OznDrzave</td>
+        <td class="text-left">@drzava.NazDrzave</td>
+        <td class="text-center">@drzava.Iso3drzave</td>
+        <td class="text-center">@drzava.SifDrzave</td>
+        <td>
+          <a asp-action="Edit"
+             asp-route-id="@drzava.OznDrzave"
+             asp-route-page="@Model.PagingInfo.CurrentPage"
+             asp-route-sort="@Model.PagingInfo.Sort"
+             asp-route-ascending="@Model.PagingInfo.Ascending"
+             class="btn btn-warning btn-xs" title="Ažuriraj"><span class="glyphicon glyphicon-pencil"></span></a>
+        </td>
+        <td>
+          <form asp-action="Delete" method="post"
+                asp-route-page="@Model.PagingInfo.CurrentPage"
+                asp-route-sort="@Model.PagingInfo.Sort"
+                asp-route-ascending="@Model.PagingInfo.Ascending">
+            <input type="hidden" name="OznDrzave" value="@drzava.OznDrzave" />
+            <button type="submit" class="btn btn-xs btn-danger delete" title="Obriši"><span class="glyphicon glyphicon-remove"></span></button>
+          </form>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

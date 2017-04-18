@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="hr_HR" xml:lang="hr_HR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FirmaMvcCore - @ViewData["Title"]</title>
+
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="~/css/site.css" />
+  @RenderSection("styles", required: false)
+</head>
+<body>
+  <div class="navbar navbar-inverse" role="navigation">
+    <a class="navbar-brand" asp-area="" asp-action="Index" asp-controller="Home">Firma MVC ASP.NET Core</a>
+  </div>
+  <div class="row panel">
+    <div id="menu" class="col-xs-2">
+      @await Component.InvokeAsync("Navigation")      
+    </div>
+    <div class="col-xs-8">
+      @*container body-content*@
+      <div>
+        <div id="tempmessage" class="alert"></div>
+        @if (TempData[Constants.Message] != null)
+        {
+          bool error = false;
+          var obj = TempData[Constants.ErrorOccurred];
+          if (obj != null)
+          {
+            error = (bool)obj;
+          }
+          <div class="alert @(error ? "alert-danger" : "alert-success")">@TempData[Constants.Message]</div>
+        }
+      </div>
+      @RenderBody()
+      <hr />
+      <footer>
+        <p>&copy; 2016 - RPPP, ZPR, FER</p>
+      </footer>
+    </div>
+  </div>
+
+
+  <script src="~/lib/jquery/dist/jquery.js"></script>
+  <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+  <script asp-src-include="lib/jquery-validation/**/jquery.validate.min.js"></script>
+  <script asp-src-include="lib/jquery-validation-unobtrusive/**/*.min.js"></script>
+
+  <script src="~/js/site.js" asp-append-version="true"></script>
+  <script src="~/js/gotopage.js" asp-append-version="true"></script>
+  <script src="~/js/validation.js" asp-append-version="true"></script>
+
+
+
+
+
+  @RenderSection("scripts", required: false)
+</body>
+</html>

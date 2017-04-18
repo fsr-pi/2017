@@ -1,0 +1,107 @@
+﻿@model DokumentiViewModel
+
+@{
+    ViewBag.Title += "Države";   
+}
+
+<div class="container">
+    <div class="form-group row">
+        <div class="col-sm-5">
+            <h2>Pregled svih dokumenata</h2>
+            <br />
+            <a asp-action="Create">Unos novog dokumenta</a>
+        </div>
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-6">            
+            @Html.Partial("KriterijPretrage", @Model.Filter)
+        </div>
+    </div>   
+</div>
+
+<div page-info="@Model.PagingInfo" page-filter="@Model.Filter" page-action="Index" page-classes-enabled="true"
+     page-class="btn" page-class-normal="btn-default"
+     page-class-selected="btn-primary" class="btn-group pull-right">
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th><a asp-route-sort="1" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 1 ? Model.PagingInfo.Ascending? false : true : true)" asp-route-filter="@Model.Filter">
+                Id dokumenta
+                </a>
+            </th>
+            <th>
+                <a asp-route-sort="2" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 2 ? Model.PagingInfo.Ascending? false : true : true)" asp-route-filter="@Model.Filter">
+                Partner
+                </a>
+            </th>
+            <th>
+                <a asp-route-sort="3" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 3 ? Model.PagingInfo.Ascending? false : true : true)" asp-route-filter="@Model.Filter">
+                    Datum dokumenta
+                </a>
+            </th> 
+            <th>
+                <a asp-route-sort="4" asp-route-page="@Model.PagingInfo.CurrentPage" asp-route-ascending="@(Model.PagingInfo.Sort == 4 ? Model.PagingInfo.Ascending? false : true : true)" asp-route-filter="@Model.Filter">
+                    Iznos dokumenta
+                </a>
+            </th>
+            <th></th>  
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dokument in Model.Dokumenti)
+        {
+            <tr>
+                <td class="text-center">
+                    <a asp-action="Edit"
+                       asp-route-id="@dokument.IdDokumenta"
+                       asp-route-page="@Model.PagingInfo.CurrentPage"
+                       asp-route-sort="@Model.PagingInfo.Sort"
+                       asp-route-ascending="@Model.PagingInfo.Ascending"
+                       asp-route-filter="@Model.Filter"
+                       asp-route-position="@dokument.Position"
+                       >
+                        @dokument.IdDokumenta
+                    </a>
+                 </td>
+                <td class="text-left">@dokument.NazPartnera</td>
+                <td class="text-center">@dokument.DatDokumenta.ToString("dd.MM.yyyy.")</td>    
+                <td class="text-center">@dokument.IznosDokumenta.ToString("C2")</td>
+                <td>
+                    <a asp-action="Edit" 
+                       asp-route-id="@dokument.IdDokumenta"                       
+                       asp-route-page="@Model.PagingInfo.CurrentPage"
+                       asp-route-sort="@Model.PagingInfo.Sort"
+                       asp-route-ascending="@Model.PagingInfo.Ascending"
+                       asp-route-filter="@Model.Filter"
+                       asp-route-position="@dokument.Position"
+                       
+                       class="btn btn-warning btn-xs" title="Ažuriraj"><span class="glyphicon glyphicon-pencil"></span></a>                   
+                </td>
+                <td>
+                    <form asp-action="Delete" method="post" 
+                          asp-route-page="@Model.PagingInfo.CurrentPage"
+                          asp-route-sort="@Model.PagingInfo.Sort"
+                          asp-route-ascending="@Model.PagingInfo.Ascending"
+                          asp-route-filter="@Model.Filter"
+                     >
+                        <input type="hidden" name="IdDokumenta" value="@dokument.IdDokumenta" />
+                        <button type="submit" class="btn btn-xs btn-danger delete" title="Obriši"><span class="glyphicon glyphicon-remove"></span></button>                        
+                    </form>
+                </td>            
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section styles{
+    <link rel="stylesheet" href="~/lib/jquery-ui/themes/base/jquery-ui.css" />
+}
+
+@section scripts{
+    <script src="~/lib/jquery-ui/jquery-ui.js"></script>
+    <script src="~/lib/jquery-ui/ui/i18n/datepicker-hr.js"></script>
+    <script src="~/js/autocomplete.js"></script>
+}
