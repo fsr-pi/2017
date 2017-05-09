@@ -1,0 +1,4 @@
+koristiti CLI
+prebaciti \\ u \ kod naziva servera
+
+dotnet ef dbcontext scaffold "Server=DESKTOP-CK9NDC0\SQLEXPRESS;Database=InsuranceSales;User ID=konekcija;Password=konekcija10" Microsoft.EntityFrameworkCore.SqlServer -o Models
