@@ -161,10 +161,7 @@ namespace Firma.Mvc.Controllers
     [HttpGet]
     public IActionResult Edit(int id)
     {
-      var artikl = ctx.Artikl
-                       .AsNoTracking()
-                       .Where(a => a.SifArtikla == id)
-                       .SingleOrDefault();
+      var artikl = ctx.Artikl.Find(id);
       if (artikl != null)
       {
         return PartialView(artikl);
@@ -265,10 +262,7 @@ namespace Firma.Mvc.Controllers
     [ValidateAntiForgeryToken]
     public IActionResult Delete(int id)
     {
-      var artikl = ctx.Artikl
-                       .AsNoTracking()
-                       .Where(a => a.SifArtikla == id)
-                       .SingleOrDefault();
+      var artikl = ctx.Artikl.Find();
       if (artikl != null)
       {
         try

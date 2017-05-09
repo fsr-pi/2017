@@ -131,7 +131,7 @@ namespace Firma.Mvc.Controllers
     [HttpGet]
     public IActionResult Edit(String id, int page = 1, int sort = 1, bool ascending = true)
     {
-      var drzava = ctx.Drzava.AsNoTracking().Where(d => d.OznDrzave == id).SingleOrDefault();
+      var drzava = ctx.Drzava.Find(id);
       if (drzava == null)
       {
         return NotFound("Ne postoji država s oznakom: " + id);
@@ -155,9 +155,7 @@ namespace Firma.Mvc.Controllers
 
       try
       {
-        Drzava drzava = await ctx.Drzava
-                          .Where(d => d.OznDrzave == id)
-                          .FirstOrDefaultAsync();
+        Drzava drzava = await ctx.Drzava.FindAsync(id);
         if (drzava == null)
         {
           return NotFound("Neispravna oznaka države: " + id);
@@ -201,10 +199,7 @@ namespace Firma.Mvc.Controllers
     [ValidateAntiForgeryToken]
     public IActionResult Delete(string OznDrzave, int page = 1, int sort = 1, bool ascending = true)
     {
-      var drzava = ctx.Drzava
-                       .AsNoTracking()
-                       .Where(d => d.OznDrzave == OznDrzave)
-                       .SingleOrDefault();
+      var drzava = ctx.Drzava.Find(OznDrzave);
       if (drzava != null)
       {
         try

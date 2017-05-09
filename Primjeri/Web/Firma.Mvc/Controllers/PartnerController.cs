@@ -179,10 +179,7 @@ namespace Firma.Mvc.Controllers
     [HttpGet]
     public IActionResult Edit(int id, int page = 1, int sort = 1, bool ascending = true)
     {
-      var partner = ctx.Partner
-                        .AsNoTracking()
-                        .Where(p => p.IdPartnera == id)
-                        .FirstOrDefault();
+      var partner = ctx.Partner.Find(id);
       if (partner == null)
       {
         return NotFound("Ne postoji partner s oznakom: " + id);
@@ -235,9 +232,7 @@ namespace Firma.Mvc.Controllers
       {
         return NotFound("Nema poslanih podataka");
       }
-      var partner = ctx.Partner
-                        .Where(p => p.IdPartnera == model.IdPartnera)
-                        .FirstOrDefault();
+      var partner = ctx.Partner.Find(model.IdPartnera);
       if (partner == null)
       {
         return NotFound("Ne postoji partner s id-om: " + model.IdPartnera);

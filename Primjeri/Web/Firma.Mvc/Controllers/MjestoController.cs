@@ -89,10 +89,7 @@ namespace Firma.Mvc.Controllers
     [HttpGet]
     public IActionResult Edit(int id)
     {
-      var mjesto = ctx.Mjesto
-                       .AsNoTracking()
-                       .Where(m => m.IdMjesta == id)
-                       .SingleOrDefault();
+      var mjesto = ctx.Mjesto.Find(id);
       if (mjesto != null)
       {
         PrepareDropDownLists();
