@@ -104,23 +104,7 @@ namespace Firma.Mvc.Controllers
       {
         Partner p = new Partner();
         p.TipPartnera = model.TipPartnera;
-        p.AdrIsporuke = model.AdrIsporuke;
-        p.AdrPartnera = model.AdrPartnera;
-        p.IdMjestaIsporuke = model.IdMjestaIsporuke;
-        p.IdMjestaPartnera = model.IdMjestaPartnera;
-        p.Oib = model.Oib;
-        if (model.TipPartnera == "O")
-        {
-          p.Osoba = new Osoba();
-          p.Osoba.ImeOsobe = model.ImeOsobe;
-          p.Osoba.PrezimeOsobe = model.PrezimeOsobe;
-        }
-        else
-        {
-          p.Tvrtka = new Tvrtka();
-          p.Tvrtka.NazivTvrtke = model.NazivTvrtke;
-          p.Tvrtka.MatBrTvrtke = model.MatBrTvrtke;
-        }
+        CopyValues(p, model);
         try
         {
           ctx.Add(p);
