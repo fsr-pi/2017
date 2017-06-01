@@ -27,5 +27,5 @@ git pull origin master
 	te pritom stvori grupu s nazivom grupaX (X je broj grupe). Ostali prihvaćaju zadatak na istoj poveznici, ali prilikom prihvaćanja umjesto unosa nove grupe odabiru postojeću grupu i pridružuju se.
 	Isporučene dokumente možete mijenjati neograničen broj puta do krajnjeg roka.
 
-5. Web aplikacija - detaljnije nakon sljedećih predavanja
-6. Programska i korisnička dokumentacija - detaljnije nakon sljedećih predavanja
+5. Web aplikacija - detaljnije nakon sljedećih predavanja **Rok za predaju ** **13.6.2017. u 8:00**
+6. Programska i korisnička dokumentacija - detaljnije nakon sljedećih predavanja **Rok za predaju ** **13.6.2017. u 8:00**
