@@ -9,6 +9,12 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="logs\**" />
+    <Content Remove="logs\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <None Remove="logs\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="wwwroot\css\site.css" />
     <Content Include="wwwroot\js\autocomplete.js" />
     <Content Include="wwwroot\js\dokumenti.js" />
@@ -25,6 +31,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.0" />	  
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="1.1.1" />
+	<PackageReference Include="NLog.Web.AspNetCore" Version="4.4.0" />
+    <PackageReference Include="PdfRpt.Core" Version="1.0.0" />
   </ItemGroup>
   
   <ItemGroup>

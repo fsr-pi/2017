@@ -32,3 +32,15 @@
    asp-action="Index" asp-controller="Dokument">
   Dokumenti
 </a>
+
+<a class="btn btn-block
+   @(ViewBag.Controller == "Report" ? "btn-primary": "btn-default")"
+   asp-action="Index" asp-controller="Report">
+  Izvještaji
+</a>
+
+<a class="btn btn-block
+   @(ViewBag.Controller == "ViewLog" ? "btn-primary": "btn-default")"
+   asp-action="Index" asp-controller="ViewLog">
+  Pregled log datoteka
+</a>

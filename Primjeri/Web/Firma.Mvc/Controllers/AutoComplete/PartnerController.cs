@@ -23,11 +23,8 @@ namespace Firma.Mvc.Controllers.AutoComplete
         
         [HttpGet]      
         public IEnumerable<IdLabel> Get(string term)
-        {
-            var sql = "SELECT * FROM vw_Partner";
-           
-            var query = ctx.vw_Partner                            
-                            .FromSql(sql)
+        {                       
+            var query = ctx.vw_Partner                                                        
                             .Select(p => new IdLabel
                             {
                                 Id = p.IdPartnera,

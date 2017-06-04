@@ -1,4 +1,6 @@
-﻿namespace Firma.Mvc.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Firma.Mvc.ViewModels
 {
     public class StavkaViewModel
     {

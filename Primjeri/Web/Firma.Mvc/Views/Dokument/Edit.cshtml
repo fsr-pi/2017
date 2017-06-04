@@ -41,13 +41,12 @@
 
 
 <div class="container">
-    <form id="#form" asp-action="Edit" 
+    <form id="form" method="post" asp-action="Edit" 
             asp-route-page="@ViewBag.Page"
             asp-route-sort="@ViewBag.Sort"
             asp-route-ascending="@ViewBag.Ascending"
             asp-route-filter="@ViewBag.Filter"
-            asp-route-position="@ViewBag.Position"
-          method="post">
+            asp-route-position="@ViewBag.Position">
         <input type="hidden" asp-for="@Model.IdDokumenta"/>
         <div asp-validation-summary="All" class="form-group row"></div>
 
@@ -94,7 +93,7 @@
         </div>
 
         <div class="form-group row">
-            <label asp-for="BrDokumenta" class="col-sm-1 col-form-label"></label>
+            <label asp-for="BrDokumenta" class="col-sm-1 col-form-label"></label>        
             <div class="col-sm-2">
                 <input asp-for="BrDokumenta" class="form-control" />
             </div>

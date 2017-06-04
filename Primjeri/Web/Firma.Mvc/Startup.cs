@@ -1,9 +1,14 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Firma.Mvc.Util.Logging;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using NLog.Extensions.Logging;
+using NLog.Web;
+using System;
 
 namespace Firma.Mvc
 {
@@ -26,6 +31,9 @@ namespace Firma.Mvc
     // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
     public void ConfigureServices(IServiceCollection services)
     {
+	  //call this in case you need aspnet-user-authtype/aspnet-user-identity
+      services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();      
+	  
       services.AddMvc();
       services.AddSession();
 
@@ -41,9 +49,12 @@ namespace Firma.Mvc
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IServiceProvider serviceProvider)
     {
-      loggerFactory.AddConsole();
+      loggerFactory.AddNLog();
+      app.AddNLogWeb();
+
+      loggerFactory.AddFirmaLogger(serviceProvider, level => level >= LogLevel.Warning);
 
       if (env.IsDevelopment())
       {

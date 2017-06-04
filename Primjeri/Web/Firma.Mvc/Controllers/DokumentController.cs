@@ -39,7 +39,7 @@ namespace Firma.Mvc.Controllers
                     if (df.IdPartnera.HasValue)
                     {
                         df.NazPartnera = ctx.vw_Partner
-                                            .FromSql("SELECT * FROM vw_Partner WHERE idPartnera=" + df.IdPartnera)
+                                            .Where(p => p.IdPartnera == df.IdPartnera)
                                             .Select(vp => vp.Naziv)
                                             .FirstOrDefault();
                     }
@@ -159,7 +159,7 @@ namespace Firma.Mvc.Controllers
             ViewBag.Filter = filter;
             ViewBag.Position = position;          
 
-            var dokument = ctx.Dokument.AsNoTracking()
+            var dokument = ctx.Dokument
                               .Where(d => d.IdDokumenta == id) 
                               .Select(d => new DokumentViewModel
                               {
@@ -213,7 +213,7 @@ namespace Firma.Mvc.Controllers
                                 .Select(s => new StavkaViewModel
                                 {
                                     IdStavke = s.IdStavke,
-                                    JedCijArtikla = s.SifArtiklaNavigation.CijArtikla,
+                                    JedCijArtikla = s.JedCijArtikla,
                                     KolArtikla = s.KolArtikla,
                                     NazArtikla = s.SifArtiklaNavigation.NazArtikla,
                                     PostoRabat = s.PostoRabat,
@@ -239,9 +239,9 @@ namespace Firma.Mvc.Controllers
             if (ModelState.IsValid)
             {
                 var dokument = ctx.Dokument
-                             .Include(d => d.Stavka)
-                             .Where(d => d.IdDokumenta == model.IdDokumenta)
-                             .FirstOrDefault();
+                                  .Include(d => d.Stavka)
+                                  .Where(d => d.IdDokumenta == model.IdDokumenta)
+                                  .FirstOrDefault();
                 if (dokument == null)
                 {
                     return NotFound("Ne postoji dokument s id-om: " + model.IdDokumenta);
@@ -254,15 +254,7 @@ namespace Firma.Mvc.Controllers
                 dokument.IdPrethDokumenta = model.IdPrethDokumenta;
                 dokument.PostoPorez = model.StopaPoreza / 100m;
                 dokument.VrDokumenta = model.VrDokumenta;
-
-                foreach (var stavka in dokument.Stavka)
-                {
-                    if (stavka.IdStavke > 0)
-                    {
-                        ctx.Entry(stavka).State = EntityState.Modified;
-                    }
-                }
-
+        
                 List<int> idStavki = model.Stavke
                                           .Where(s => s.IdStavke > 0)
                                           .Select(s => s.IdStavke)
@@ -282,15 +274,12 @@ namespace Firma.Mvc.Controllers
                     {
                         novaStavka = new Stavka();
                         dokument.Stavka.Add(novaStavka);
-                    }                    
-                    novaStavka.IdStavke = stavka.IdStavke;
+                    }                                       
                     novaStavka.SifArtikla = stavka.SifArtikla;
                     novaStavka.KolArtikla = stavka.KolArtikla;
                     novaStavka.PostoRabat = stavka.PostoRabat;
                     novaStavka.JedCijArtikla = stavka.JedCijArtikla;                    
                 }
-
-                
 
                 dokument.IznosDokumenta = (1 + dokument.PostoPorez) * 
                                           dokument.Stavka.Sum(s => s.KolArtikla * (1 - s.PostoRabat) * s.JedCijArtikla);
@@ -302,7 +291,14 @@ namespace Firma.Mvc.Controllers
 
                     TempData[Constants.Message] = $"Dokument {dokument.IdDokumenta} uspješno ažuriran.";
                     TempData[Constants.ErrorOccurred] = false;
-                    return RedirectToAction(nameof(Edit), new { id = dokument.IdDokumenta });
+                    return RedirectToAction(nameof(Edit), new {
+                                                            id = dokument.IdDokumenta,
+                                                            position = position,
+                                                            filter = filter,
+                                                            page = page,
+                                                            sort = sort,
+                                                            ascending = ascending
+                    });
 
                 }
                 catch (Exception exc)

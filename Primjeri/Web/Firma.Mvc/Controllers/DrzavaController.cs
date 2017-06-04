@@ -7,6 +7,8 @@ using Firma.Mvc.ViewModels;
 using System;
 using Firma.Mvc.Extensions;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace Firma.Mvc.Controllers
 {
@@ -14,11 +16,13 @@ namespace Firma.Mvc.Controllers
   {    
     private readonly FirmaContext ctx;
     private readonly AppSettings appData;
+    private readonly ILogger logger;
 
-    public DrzavaController(FirmaContext ctx, IOptions<AppSettings> options)
+    public DrzavaController(FirmaContext ctx, IOptions<AppSettings> options, ILogger<DrzavaController> logger)
     {
       this.ctx = ctx;
       appData = options.Value;
+      this.logger = logger;
     }
 
     //jednostavna varijanta, bez straničenja i sortiranja
@@ -32,7 +36,7 @@ namespace Firma.Mvc.Controllers
     //}
 
     public IActionResult Index(int page = 1, int sort = 1, bool ascending = true)
-    {
+    {      
       int pagesize = appData.PageSize;
 
       var query = ctx.Drzava
@@ -104,20 +108,22 @@ namespace Firma.Mvc.Controllers
     [ValidateAntiForgeryToken]
     public IActionResult Create(Drzava drzava)
     {
+      logger.LogTrace(JsonConvert.SerializeObject(drzava));
       if (ModelState.IsValid)
       {
         try
         {
           ctx.Add(drzava);
           ctx.SaveChanges();
+          logger.LogInformation($"Država {drzava.NazDrzave} dodana.");
 
           TempData[Constants.Message] = $"Država {drzava.NazDrzave} dodana.";
           TempData[Constants.ErrorOccurred] = false;
           return RedirectToAction(nameof(Index));
-
         }
         catch (Exception exc)
-        {
+        {          
+          logger.LogError("Pogreška prilikom dodavanje nove države: {0}", exc.CompleteExceptionMessage());          
           ModelState.AddModelError(string.Empty, exc.CompleteExceptionMessage());
           return View(drzava);
         }
@@ -131,9 +137,10 @@ namespace Firma.Mvc.Controllers
     [HttpGet]
     public IActionResult Edit(String id, int page = 1, int sort = 1, bool ascending = true)
     {
-      var drzava = ctx.Drzava.Find(id);
+      var drzava = ctx.Drzava.AsNoTracking().Where(d => d.OznDrzave == id).SingleOrDefault();
       if (drzava == null)
       {
+        logger.LogWarning("Ne postoji država s oznakom: {0} ", id);
         return NotFound("Ne postoji država s oznakom: " + id);
       }
       else
@@ -155,7 +162,9 @@ namespace Firma.Mvc.Controllers
 
       try
       {
-        Drzava drzava = await ctx.Drzava.FindAsync(id);
+        Drzava drzava = await ctx.Drzava
+                          .Where(d => d.OznDrzave == id)
+                          .FirstOrDefaultAsync();
         if (drzava == null)
         {
           return NotFound("Neispravna oznaka države: " + id);
@@ -199,7 +208,10 @@ namespace Firma.Mvc.Controllers
     [ValidateAntiForgeryToken]
     public IActionResult Delete(string OznDrzave, int page = 1, int sort = 1, bool ascending = true)
     {
-      var drzava = ctx.Drzava.Find(OznDrzave);
+      var drzava = ctx.Drzava
+                       .AsNoTracking()
+                       .Where(d => d.OznDrzave == OznDrzave)
+                       .SingleOrDefault();
       if (drzava != null)
       {
         try
@@ -209,10 +221,12 @@ namespace Firma.Mvc.Controllers
           ctx.SaveChanges();
           TempData[Constants.Message] = $"Država {naziv} uspješno obrisana";
           TempData[Constants.ErrorOccurred] = false;
+          logger.LogInformation($"Država {naziv} uspješno obrisana");
         }
         catch (Exception exc)
         {
           TempData[Constants.Message] = "Pogreška prilikom brisanja države: " + exc.CompleteExceptionMessage();
+          logger.LogError("Pogreška prilikom brisanja države: " + exc.CompleteExceptionMessage());
           TempData[Constants.ErrorOccurred] = true;
         }
       }

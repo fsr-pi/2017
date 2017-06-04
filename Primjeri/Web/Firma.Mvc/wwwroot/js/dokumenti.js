@@ -45,11 +45,11 @@ function DodajArtikl() {
             return;
         }
        
-        var kolicina = parseFloat($("#artikl-kolicina").val().replace(',', '.')); //treba biti točku, a ne zarez za parseFloat
+        var kolicina = parseFloat($("#artikl-kolicina").val().replace(',', '.')); //treba biti točka, a ne zarez za parseFloat
         if (isNaN(kolicina))
             kolicina = 1;
 
-        var rabat = parseFloat($("#artikl-rabat").val().replace(',', '.')); //treba točku, a ne zarez za parseFloat
+        var rabat = parseFloat($("#artikl-rabat").val().replace(',', '.')); //treba točka, a ne zarez za parseFloat
         if (isNaN(rabat))
             rabat = 0;        
 
@@ -60,8 +60,8 @@ function DodajArtikl() {
         iznos = iznos.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") + ' kn';
         var cijena_formatirana = cijena.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") + ' kn'
 
-        //TO DO Ako su hr postavke sa zarezom (TO DO: srediti) //http://haacked.com/archive/2011/03/19/fixing-binding-to-decimals.aspx/
-        //ili vidi ovo http://intellitect.com/custom-model-binding-in-asp-net-core-1-0/
+        //Alternativa ako su hr postavke sa zarezom //http://haacked.com/archive/2011/03/19/fixing-binding-to-decimals.aspx/
+        //ili ovo http://intellitect.com/custom-model-binding-in-asp-net-core-1-0/
 
         template = template.replace(/--sifra--/g, sifra)
                             .replace(/--kolicina--/g, kolicina.toFixed(2).replace('.', ','))

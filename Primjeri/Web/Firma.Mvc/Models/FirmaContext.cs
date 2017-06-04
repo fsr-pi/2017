@@ -15,6 +15,7 @@ namespace Firma.Mvc.Models
     public virtual DbSet<Tvrtka> Tvrtka { get; set; }
     public virtual DbSet<ViewPartner> vw_Partner { get; set; }
     public virtual DbSet<ViewDokumentInfo> ViewDokumentInfo { get; set; }
+    public virtual DbSet<StavkaDenorm> StavkaDenorm { get; set; }
 
     public FirmaContext(DbContextOptions<FirmaContext> options) : base(options)
     {
@@ -29,6 +30,10 @@ namespace Firma.Mvc.Models
       modelBuilder.Entity<ViewDokumentInfo>(entity =>
       {
         entity.HasKey(e => e.IdDokumenta);
+      });
+      modelBuilder.Entity<StavkaDenorm>(entity =>
+      {
+        entity.HasKey(e => e.IdStavke);
       });
 
 
@@ -75,7 +80,7 @@ namespace Firma.Mvc.Models
             .HasDefaultValueSql("0");
 
         entity.Property(e => e.PostoPorez)
-            .HasColumnType("decimal")
+            .HasColumnType("decimal(4,2)")
             .HasDefaultValueSql("0");
 
         entity.Property(e => e.VrDokumenta)
@@ -216,10 +221,10 @@ namespace Firma.Mvc.Models
             .HasColumnType("money")
             .HasDefaultValueSql("0");
 
-        entity.Property(e => e.KolArtikla).HasColumnType("decimal");
+        entity.Property(e => e.KolArtikla).HasColumnType("decimal(18,5)");
 
         entity.Property(e => e.PostoRabat)
-            .HasColumnType("decimal")
+            .HasColumnType("decimal(4,2)")
             .HasDefaultValueSql("0");
 
         entity.Property(e => e.SifArtikla).HasDefaultValueSql("0");
