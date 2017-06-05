@@ -15,12 +15,12 @@ namespace Firma.Mvc.TagHelpers
   /// Upotrebljava se kao atribut HTML oznake *div* 
   /// <example>
   /// Primjer upotrebe
-  /// <code>
+  /// ```
   /// <div page-info="@Model.PagingInfo" page-action="Index" page-classes-enabled="true"
   ///      page-class="btn" page-class-normal="btn-default"
   ///      page-class-selected="btn-primary" class="btn-group pull-right">
   /// </div>
-  /// </code>
+  /// ```
   /// U datoteku *_ViewImports.cshtml* potrebno dodati `@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers`  
   /// te u pogled uključiti vlastitu javascript datoteku *gotopage.js*
   /// </example>
@@ -32,7 +32,7 @@ namespace Firma.Mvc.TagHelpers
     private readonly IUrlHelperFactory urlHelperFactory;  
     private readonly AppSettings appData;
     public PageLinkTagHelper(IUrlHelperFactory helperFactory, IOptions<AppSettings> options)
-    {
+    {      
       urlHelperFactory = helperFactory;
       appData = options.Value;
     }
