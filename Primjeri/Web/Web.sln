@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Firma.Mvc", "Firma.Mvc\Firma.Mvc.csproj", "{6E90FE40-2919-4205-82BC-081F504E725C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Firma.Mvc.Tests", "Firma.Mvc.Tests\Firma.Mvc.Tests.csproj", "{14783A39-A907-466E-A66F-289AB40259D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,17 +17,12 @@ Global
 		{6E90FE40-2919-4205-82BC-081F504E725C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E90FE40-2919-4205-82BC-081F504E725C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E90FE40-2919-4205-82BC-081F504E725C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14783A39-A907-466E-A66F-289AB40259D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14783A39-A907-466E-A66F-289AB40259D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14783A39-A907-466E-A66F-289AB40259D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14783A39-A907-466E-A66F-289AB40259D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 2
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://rppp.fer.hr/tfs/studentcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Firma.Mvc\\Firma.Mvc.csproj
-		SccProjectName1 = Firma.Mvc
-		SccLocalPath1 = Firma.Mvc
 	EndGlobalSection
 EndGlobal
