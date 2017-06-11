@@ -28,6 +28,6 @@ git pull origin master
 	Isporučene dokumente možete mijenjati neograničen broj puta do krajnjeg roka.
 
 5. Web aplikacija - detaljnije nakon sljedećih predavanja **Rok za predaju ** **13.6.2017. u 8:00**
-6. Programska i korisnička dokumentacija - detaljnije nakon sljedećih predavanja **Rok za predaju ** **13.6.2017. u 8:00**
+6. Programska i korisnička dokumentacija - detaljnije nakon sljedećih predavanja **Rok za predaju ** **15.6.2017. u 8:00**
 	* Programaska i korisnička dokumentacija isporučuju se u zajedničku mapu grupe. Mapa će se stvoriti nakon što prva osoba iz grupe prihvati zadatak koji se nalazi na sljedećoj poveznici https://classroom.github.com/group-assignment-invitations/5a903235d45d431946e09bd4748a4e05 te pritom stvori grupu s nazivom grupaX (X je broj grupe). Ostali prihvaćaju zadatak na istoj poveznici, ali prilikom prihvaćanja umjesto unosa nove grupe odabiru postojeću grupu i pridružuju se. Isporučene dokumente možete mijenjati neograničen broj puta do krajnjeg roka.
 
